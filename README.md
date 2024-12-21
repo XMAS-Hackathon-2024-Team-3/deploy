@@ -2,6 +2,7 @@ Deploy
 
 Step 0:
 git clone https://github.com/XMAS-Hackathon-2024-Team-3/deploy
+cd deploy
 
 Step 1:  
 git submodule update --init --recursive
