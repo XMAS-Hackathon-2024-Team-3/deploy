@@ -13,7 +13,7 @@ services:
     build: ./services/node-backend
     restart: always
     environment:
-      ML_ADDRESS: mlflow:3000
+      ML_HOST: mlflow:3000
       POSTGRES_USER: XMAS2024
       POSTGRES_PASSWORD: XMASPASSWORD
       POSTGRES_DB: pipeline
@@ -35,3 +35,4 @@ services:
       PORT: 3000
     depends_on:
       - backend
+
