@@ -4,32 +4,34 @@ services:
   db:
     image: postgres:15-alpine
     restart: always
-    #shm_size: 128mb
-    ports:
-      - "5434:5432"
     environment:
-      POSTGRES_PASSWORD: M8&wer1GHcbT77zV
-      POSTGRES_USER: postgres
-      POSTGRES_DB: hak3
+      POSTGRES_USER: XMAS2024
+      POSTGRES_PASSWORD: XMASPASSWORD
+      POSTGRES_DB: pipeline
 
   backend:
-    build: ./services/backend
+    build: ./services/node-backend
     restart: always
-    ports:
-      - "8000:8000"
     environment:
-    
-      DB_CREDS: postgres://postgres:M8&wer1GHcbT77zV@db/hak3
-      SOURCES_PATH: /var/lib/myapp/sources
-      RESULTS_PATH: /var/lib/myapp/results
+      ML_ADDRESS: mlflow:3000
+      POSTGRES_USER: XMAS2024
+      POSTGRES_PASSWORD: XMASPASSWORD
+      POSTGRES_DB: pipeline
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
     volumes:
-      - ./volumes/sources:/var/lib/myapp/sources
-      - ./volumes/results:/var/lib/myapp/results
+      - ./volumes/data:/app/data
+    command: 
+      - /app/data/payments.csv
+      - /app/data/providers.csv
+      - /app/data/ex_rates.csv
     depends_on:
       - db
 
   mlflow:
     build: ./services/ai-python-service
     restart: always
+    environment:
+      PORT: 3000
     depends_on:
       - backend

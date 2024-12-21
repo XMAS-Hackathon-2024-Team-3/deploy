@@ -1,3 +1,6 @@
-[submodule "serivces/ai-python-service"]
-	path = serivces/ai-python-service
+[submodule "services/ai-python-service"]
+	path = services/ai-python-service
 	url = https://github.com/XMAS-Hackathon-2024-Team-3/ai-python-service
+[submodule "services/node-backend"]
+	path = services/node-backend
+	url = https://github.com/XMAS-Hackathon-2024-Team-3/node-backend
