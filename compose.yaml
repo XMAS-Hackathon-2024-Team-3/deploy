@@ -1,0 +1,35 @@
+
+services:
+
+  db:
+    image: postgres:15-alpine
+    restart: always
+    #shm_size: 128mb
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_PASSWORD: M8&wer1GHcbT77zV
+      POSTGRES_USER: postgres
+      POSTGRES_DB: hak3
+
+  backend:
+    build: ./services/backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+    
+      DB_CREDS: postgres://postgres:M8&wer1GHcbT77zV@db/hak3
+      SOURCES_PATH: /var/lib/myapp/sources
+      RESULTS_PATH: /var/lib/myapp/results
+    volumes:
+      - ./volumes/sources:/var/lib/myapp/sources
+      - ./volumes/results:/var/lib/myapp/results
+    depends_on:
+      - db
+
+  mlflow:
+    build: ./services/ai-python-service
+    restart: always
+    depends_on:
+      - backend

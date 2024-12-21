@@ -1,0 +1,3 @@
+[submodule "serivces/ai-python-service"]
+	path = serivces/ai-python-service
+	url = https://github.com/XMAS-Hackathon-2024-Team-3/ai-python-service
