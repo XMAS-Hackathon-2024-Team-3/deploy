@@ -11,7 +11,7 @@ services:
 
   backend:
     build: ./services/node-backend
-    restart: always
+    restart: on-failure
     environment:
       ML_HOST: mlflow:3000
       POSTGRES_USER: XMAS2024
@@ -26,13 +26,13 @@ services:
       - /app/data/providers.csv
       - /app/data/ex_rates.csv
     depends_on:
-      - db
+      - mlflow
 
   mlflow:
     build: ./services/ai-python-service
     restart: always
     environment:
       PORT: 3000
+      LOGLEVEL: critical
     depends_on:
-      - backend
-
+      - db
