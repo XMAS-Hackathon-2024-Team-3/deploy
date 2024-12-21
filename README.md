@@ -14,4 +14,6 @@ Step 3:
 docker compose up
 
 Step 4:
-check volumes/data/results folder
+wait until "backend" exited
+check volumes/data/results folder for results
+check backend log for average ml execution time
