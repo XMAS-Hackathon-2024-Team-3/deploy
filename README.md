@@ -8,7 +8,7 @@ Step 1:
 git submodule update --init --recursive
 
 Step 2:
-move your payments.csv , providers.csv , ex_rates.csv files into volumes/data folder
+move your payments.csv , providers.csv , ex_rates.csv files (use same filenames) into volumes/data folder
 
 Step 3:
 docker compose up
