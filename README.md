@@ -5,7 +5,7 @@ git clone https://github.com/XMAS-Hackathon-2024-Team-3/deploy
 cd deploy
 
 Step 1:  
-git submodule update --init --recursive
+git submodule update --init --recursive --remote
 
 Step 2:
 move your payments.csv , providers.csv , ex_rates.csv files (use same filenames) into volumes/data folder
